@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6900465a-fbf0-4625-ab2b-10e6899a9a34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Views/default.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Combine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Combine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/combine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/combine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/footer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/default.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/default.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/welcome_message.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Combine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="66" column="47" lean-forward="true" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
+            <state relative-caret-position="68">
+              <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
               <folding>
                 <element signature="e#34#55#0#PHP" expanded="true" />
               </folding>
@@ -47,24 +44,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Views/combine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+            <state relative-caret-position="952">
+              <caret line="56" column="36" lean-forward="true" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Views/default.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="56" lean-forward="true" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
-              <folding>
-                <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="357">
+              <caret line="30" column="54" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -89,8 +82,8 @@
       <find>$id</find>
       <find>getLyricChildValue</find>
       <find>&gt;Sem&lt;</find>
-      <find>addLyricsTag</find>
       <find>navbarBasicExample</find>
+      <find>addLyricsTag</find>
     </findStrings>
     <replaceStrings>
       <replace>main-nav</replace>
@@ -112,13 +105,14 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/trials/257_1.mscx" />
-        <option value="$PROJECT_DIR$/app/Controllers/Combine.php" />
         <option value="$PROJECT_DIR$/app/Views/header.php" />
-        <option value="$PROJECT_DIR$/app/Views/default.php" />
         <option value="$PROJECT_DIR$/app/Views/combine.php" />
+        <option value="$PROJECT_DIR$/app/Controllers/Combine.php" />
+        <option value="$PROJECT_DIR$/app/Views/default.php" />
       </list>
     </option>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="muse-processor.local" id="1b18f115-457d-4b84-9c40-d5483bfea1cd" name="muse-processor.local" />
@@ -285,7 +279,7 @@
       <updated>1608203863931</updated>
       <workItem from="1608203865404" duration="16387000" />
       <workItem from="1608251269350" duration="5392000" />
-      <workItem from="1608283461498" duration="17965000" />
+      <workItem from="1608283461498" duration="18523000" />
     </task>
     <task id="LOCAL-00001" summary="codeigniter init, combine controller">
       <created>1608257008773</created>
@@ -308,11 +302,25 @@
       <option name="project" value="LOCAL" />
       <updated>1608306529316</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add styles">
+      <created>1608310049292</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608310049292</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add more condition on refrain detection">
+      <created>1608310326640</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608310326640</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39744000" />
+    <option name="totallyTimeSpent" value="40302000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -325,7 +333,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.16777778" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.41444445" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -348,7 +356,9 @@
     <MESSAGE value="codeigniter init, combine controller" />
     <MESSAGE value="phpstorm setup, setup score title" />
     <MESSAGE value="add refrain detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="add refrain detection" />
+    <MESSAGE value="add styles" />
+    <MESSAGE value="add more condition on refrain detection" />
+    <option name="LAST_COMMIT_MESSAGE" value="add more condition on refrain detection" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.js" />
@@ -537,29 +547,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Combine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="66" column="47" lean-forward="true" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
+        <state relative-caret-position="68">
+          <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
           <folding>
             <element signature="e#34#55#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Views/default.php">
+    <entry file="file://$PROJECT_DIR$/app/Views/combine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="56" lean-forward="true" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="952">
+          <caret line="56" column="36" lean-forward="true" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Views/combine.php">
+    <entry file="file://$PROJECT_DIR$/app/Views/default.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+        <state relative-caret-position="357">
+          <caret line="30" column="54" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
         </state>
       </provider>
     </entry>
