@@ -1,0 +1,26 @@
+{
+  "name": "muse-processor",
+  "version": "1.0.0",
+  "description": "Combine multilanguage lyrics into single score and convert score into PPT",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanatanjung/muse-processor.git"
+  },
+  "keywords": [
+    "musescore",
+    "ppt",
+    "xml",
+    "nodejs"
+  ],
+  "author": "Hana Tanjung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanatanjung/muse-processor/issues"
+  },
+  "homepage": "https://github.com/hanatanjung/muse-processor#readme",
+  "dependencies": {}
+}
