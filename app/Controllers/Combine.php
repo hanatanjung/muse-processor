@@ -65,9 +65,6 @@ class Combine extends BaseController
 
         $zip->close();
         $this->downloadZipFile($zip_file_path);
-
-
-        echo view('combine', ['success' => 'Downloading ' . basename($zip_file_path . ' . . .')]);
     }
 
     /**
@@ -164,8 +161,10 @@ class Combine extends BaseController
         $lyric = $chord[0]->addChild('Lyrics');
 
         // check if single refrain
-        if ($measure_num > $score_info['measure_reff_start'] || ($measure_num == $score_info['measure_reff_start'] && $chord_num >= $score_info['chord_reff_start'])) {
-            $verse_num = 1;
+        if ($score_info['measure_reff_start'] > 0 && $score_info['chord_reff_start'] > 0) {
+            if ($measure_num > $score_info['measure_reff_start'] || ($measure_num == $score_info['measure_reff_start'] && $chord_num >= $score_info['chord_reff_start'])) {
+                $verse_num = 1;
+            }
         }
 
         // get text lyric
