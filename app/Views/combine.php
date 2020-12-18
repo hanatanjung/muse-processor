@@ -1,26 +1,72 @@
-<?= $this->renderSection('header') ?>
+<?= $this->extend('default') ?>
 
-<!-- CONTENT -->
-<section>
-    <?php
-    echo form_open_multipart('combine/upload');
+<?= $this->section('content') ?>
+    <!-- CONTENT -->
+    <section class="section mx-6">
+        <?= form_open_multipart('combine/upload') ?>
 
-    echo form_label('Musescore ID*', 'muse-id');
-    echo form_upload(['id' => 'muse-id', 'name' => 'muse[id]', 'required' => true]);
+        <div class="field">
+            <?= form_label('Musescore ID*', 'muse-id', ['class' => 'label']) ?>
+            <div class="control">
+                <?= form_upload([
+                    'id' => 'muse-id',
+                    'name' => 'muse[id]',
+                    'required' => true,
+                    'class' => 'input'
+                ]) ?>
+            </div>
+        </div>
 
-    echo form_label('Musescore JP', 'muse-jp');
-    echo form_upload(['id' => 'muse-jp', 'name' => 'muse[jp]']);
+        <div class="field">
+            <?= form_label('Musescore JP', 'muse-jp', ['class' => 'label']) ?>
+            <div class="control">
+                <?= form_upload([
+                    'id' => 'muse-jp',
+                    'name' => 'muse[jp]',
+                    'class' => 'input'
+                ]) ?>
+            </div>
+        </div>
 
-    echo form_label('Musescore EN', 'muse-en');
-    echo form_upload(['id' => 'muse-en', 'name' => 'muse[en]']);
+        <div class="field">
+            <?= form_label('Musescore EN', 'muse-en', ['class' => 'label']) ?>
+            <div class="control">
+                <?= form_upload([
+                    'id' => 'muse-en',
+                    'name' => 'muse[en]',
+                    'class' => 'input'
+                ]) ?>
+            </div>
+        </div>
 
-    echo form_label('New File Name', 'new-file-name');
-    echo form_input(['id' => 'new-file-name', 'name' => 'filename']);
+        <div class="field">
+            <?= form_label('New File Name', 'new-file-name', ['class' => 'label']) ?>
+            <div class="control">
+                <?= form_input([
+                    'id' => 'new-file-name',
+                    'name' => 'filename',
+                    'placeholder' => 'e.g. 123',
+                    'class' => 'input'
+                ]) ?>
+            </div>
+        </div>
 
-    echo form_submit('combine', 'Combine');
+        <div class="field">
+            <?= form_submit([
+                'id' => 'combine',
+                'name' => 'combine',
+                'class' => 'button is-danger'
+            ], 'Combine') ?>
+        </div>
 
-    echo form_close();
-    ?>
-</section>
+        <?= form_close() ?>
 
-<?= $this->renderSection('footer') ?>
+        <?php if (isset($success)) : ?>
+            <div class="notification is-success">
+                <?= $success ?>
+            </div>
+        <?php endif; ?>
+
+    </section>
+
+<?= $this->endSection() ?>

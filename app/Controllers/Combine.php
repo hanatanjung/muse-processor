@@ -65,6 +65,9 @@ class Combine extends BaseController
 
         $zip->close();
         $this->downloadZipFile($zip_file_path);
+
+
+        echo view('combine', ['success' => 'Downloading ' . basename($zip_file_path . ' . . .')]);
     }
 
     /**
