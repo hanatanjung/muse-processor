@@ -5,8 +5,8 @@
     <?php
     echo form_open_multipart('combine/upload');
 
-    echo form_label('Musescore ID', 'muse-id');
-    echo form_upload(['id' => 'muse-id', 'name' => 'muse[id]']);
+    echo form_label('Musescore ID*', 'muse-id');
+    echo form_upload(['id' => 'muse-id', 'name' => 'muse[id]', 'required' => true]);
 
     echo form_label('Musescore JP', 'muse-jp');
     echo form_upload(['id' => 'muse-jp', 'name' => 'muse[jp]']);
