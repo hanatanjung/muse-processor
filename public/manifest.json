@@ -1,0 +1,6 @@
+{
+  "ppt": {
+    "css": "/dist/ppt.css",
+    "js": "/dist/ppt.js"
+  }
+}
