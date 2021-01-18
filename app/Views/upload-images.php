@@ -54,9 +54,13 @@
 
     </section>
 
-    <section>
-        <div id="scores-display" class="is-flex is-align-items-center is-flex-direction-row croppr-container">
+    <section class="columns">
+        <div id="scores-display" class="column is-flex is-align-items-center is-flex-direction-row is-flex-wrap-wrap is-three-quarter">
 
+        </div>
+        <div class="column is-one-quarter">
+            <button id="create-ppt" class="button is-info mb-2">Create PPT</button>
+            <div id="crop-values-reader" class="notification is-warning is-light">{}</div>
         </div>
     </section>
 

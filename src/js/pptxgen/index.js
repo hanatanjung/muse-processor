@@ -1,1 +1,1 @@
-import PptGenerator from './PptGenerator';let form = document.getElementById('ppt-generator');if (form) {    new PptGenerator(form);}
+import 'core-js/stable';import PptGenerator from './PptGenerator';let form = document.getElementById('ppt-generator');if (form) {    new PptGenerator(form);}
