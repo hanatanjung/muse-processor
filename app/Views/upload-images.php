@@ -59,11 +59,12 @@
 
         </div>
         <div class="column is-one-quarter">
-            <button id="create-ppt" class="button is-info mb-2">Create PPT</button>
+            <button id="create-ppt" class="button is-info mb-2" disabled>Create PPT</button>
             <div id="crop-values-reader" class="notification is-warning is-light">{}</div>
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.4.0/dist/pptxgen.bundle.js"></script>
     <script src="<?= base_url('dist/ppt.js') ?>"></script>
 
 <?= $this->endSection() ?>

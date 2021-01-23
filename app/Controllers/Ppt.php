@@ -32,10 +32,29 @@ class Ppt extends BaseController
             }
         }
 
+        list($width, $height) = getimagesize($stored_images[1][1]);
+
         return $this->setResponseFormat('json')->respond([
             'success' => true,
             'title' => $this->request->getVar('filename'),
-            'files' => $stored_images
+            'files' => $stored_images,
+            'width' => $width,
+            'height' => $height
+        ]);
+    }
+
+    public function delete()
+    {
+        $filenames = $this->request->getJSON('true');
+        foreach ($filenames as $pages) {
+            foreach ($pages as $name) {
+                $path = str_replace(base_url(), ROOTPATH . 'public', $name);
+                unlink ($path);
+            }
+        }
+
+        return $this->setResponseFormat('json')->respond([
+            'success' => true,
         ]);
     }
 }
