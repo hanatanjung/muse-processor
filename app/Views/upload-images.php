@@ -65,6 +65,7 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.4.0/dist/pptxgen.bundle.js"></script>
-    <script src="<?= base_url('dist/ppt.js') ?>"></script>
+<?php $assets = json_decode(file_get_contents(__DIR__ . '/../../public/manifest.json')) ?>
+    <script src="<?= base_url($assets->ppt->js) ?>"></script>
 
 <?= $this->endSection() ?>
