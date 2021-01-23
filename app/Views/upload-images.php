@@ -60,7 +60,9 @@
         </div>
         <div class="column is-one-quarter">
             <button id="create-ppt" class="button is-info mb-2" disabled>Create PPT</button>
-            <div id="crop-values-reader" class="notification is-warning is-light">{}</div>
+            <div class="notification is-warning is-light">
+                <pre id="crop-values-reader">{}</pre>
+            </div>
         </div>
     </section>
 
