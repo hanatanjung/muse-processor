@@ -27,7 +27,10 @@ class Combine extends BaseController
         }
 
         // get total verses
-        $score_info = $this->getScoreInfo($xmls['id']);
+        $score_infos = [];
+        foreach ($xmls as $lang => $xml) {
+            $score_infos[$lang] = $this->getScoreInfo($xml);
+        }
 
         // get jp and en title
         $en_title = isset($xmls['en']) ? $this->getTitle($xmls['en']) : '';
@@ -39,7 +42,7 @@ class Combine extends BaseController
         $zip->open($zip_file_path, ZipArchive::CREATE);
 
         // copy lyrics
-        for ($verse_num = 1; $verse_num <= $score_info['total_verses']; $verse_num++) {
+        for ($verse_num = 1; $verse_num <= $score_infos['id']['total_verses']; $verse_num++) {
             $new_xml = new SimpleXMLElement($xmls['id']->saveXML());
 
             // change title & remove subtitle
@@ -48,12 +51,12 @@ class Combine extends BaseController
             // remove all lyrics
             $this->cleanScore($new_xml);
 
-            for($measure_num = 1; $measure_num <= $score_info['total_measures']; $measure_num++) {
+            for($measure_num = 1; $measure_num <= $score_infos['id']['total_measures']; $measure_num++) {
                 foreach ($new_xml->xpath('/museScore/Score/Staff/Measure[' . $measure_num . ']/voice/Chord') as $chord_num => $chord) {
                     // add Lyric
                     foreach ($langs as $lang_num => $lang) {
                         if (isset ($xmls[$lang])) {
-                            $this->addLyricsTag($chord, $xmls[$lang], $lang, $measure_num, $chord_num + 1, $verse_num, $lang_num, $score_info);
+                            $this->addLyricsTag($chord, $xmls[$lang], $lang, $measure_num, $chord_num + 1, $verse_num, $lang_num, $score_infos[$lang]);
                         }
                     }
                 }
@@ -76,8 +79,16 @@ class Combine extends BaseController
      */
     private function getLyricChildValue(SimpleXMLElement $xml, $measure_num, $chord_num, $verse_num)
     {
-        $val = $xml->xpath('/museScore/Score/Staff/Measure[' . $measure_num . ']/voice/Chord[' . $chord_num . ']/Lyrics[' . $verse_num . ']');
-        return (count($val) > 0) ? $val[0] : false;
+        $lyrics = $xml->xpath('/museScore/Score/Staff/Measure[' . $measure_num . ']/voice/Chord[' . $chord_num . ']/Lyrics');
+        if (count($lyrics) > 0) {
+            foreach ($lyrics as $lyric) {
+                if (($verse_num == 1 && !isset($lyric->no) || (intval($lyric->no) + 1 == $verse_num))) {
+                    return $lyric;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -138,6 +149,7 @@ class Combine extends BaseController
     }
 
     /**
+     * Add lyric per syllable
      * @param SimpleXMLElement $chord
      * @param SimpleXMLElement $xml
      * @param string $lang
@@ -172,11 +184,11 @@ class Combine extends BaseController
 
         if ($oriLyric) {
             // get syllabic of lyric
-            if ($oriLyric->syllabic) {
-                $lyric->addChild('syllabic', $oriLyric->syllabic);
-            }
-            if ($oriLyric->text) {
-                $lyric->addChild('text', $oriLyric->text);
+            $tag_names = ['syllabic', 'text', 'ticks', 'ticks_f'];
+            foreach ($tag_names as $tag_name) {
+                if ($oriLyric->{$tag_name}) {
+                    $lyric->addChild($tag_name, $oriLyric->{$tag_name});
+                }
             }
 
             // add lyric number
