@@ -1,0 +1,1 @@
+# Muse Processor## 1.1.0 (Apr 23, 2021)- add changelog### New features- score normalizer- font change for Japanese (2nd Lyric) in Windows- change page scale### Fixes- add loading on waiting PPT creation

@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6900465a-fbf0-4625-ab2b-10e6899a9a34" name="Default Changelist" comment="reformat code">
+    <list default="true" id="6900465a-fbf0-4625-ab2b-10e6899a9a34" name="Default Changelist" comment="fix lyric copy (add ticks and ticks_f), check reff per language, only copy lyric if the verse is correct, put title a bit higher">
+      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/muse-processor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/muse-processor.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Combine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Combine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/upload-images.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/upload-images.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/ppt-50b13c3f3d84bb4a1c90.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/ppt-f6a5fac5726da383bbb6.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/ppt-50b13c3f3d84bb4a1c90.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/ppt-f6a5fac5726da383bbb6.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,74 +23,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Views/default.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="94" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trials/192.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="350" column="10" selection-start-line="350" selection-start-column="10" selection-end-line="350" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scss/ppt.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="168" column="34" selection-start-line="168" selection-start-column="34" selection-end-line="168" selection-end-column="34" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#23#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Views/upload-images.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="818">
-              <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Combine.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="75" column="24" lean-forward="true" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
-              <folding>
-                <element signature="e#34#55#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -120,6 +61,7 @@
       <find>dist</find>
       <find>json.</find>
       <find>sar</find>
+      <find>しょ</find>
     </findStrings>
     <replaceStrings>
       <replace>main-nav</replace>
@@ -153,7 +95,6 @@
         <option value="$PROJECT_DIR$/public/assets/js/pptxgen/PptGenerator.js" />
         <option value="$PROJECT_DIR$/assets/ppt.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/babel.config.js" />
         <option value="$PROJECT_DIR$/src/ppt.js" />
         <option value="$PROJECT_DIR$/src/js/pptxgen/index.js" />
@@ -165,16 +106,19 @@
         <option value="$PROJECT_DIR$/public/.htaccess.prod" />
         <option value="$PROJECT_DIR$/app/Controllers/Combine.php" />
         <option value="$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="muse-processor.local" id="1b18f115-457d-4b84-9c40-d5483bfea1cd" name="muse-processor.local" />
       <server host="study.local.gplusmedia.com" id="b68e6d46-5b2c-47e9-80e0-6d4ea30b694e" name="study.local.gplusmedia.com" />
     </servers>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWebServerValidation" path_to_validation_script="C:\xampp\htdocs\muse-processor\public" selected_validation_type="LOCAL" web_path_to_validation_script="http://muse-processor.local" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
@@ -223,6 +167,7 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectId" id="1rZSTj3ryfhcOa3LAOAMPhUmXvE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -250,20 +195,12 @@
             <path>
               <item name="muse-processor" type="b2602c69:ProjectViewProjectNode" />
               <item name="muse-processor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="muse-processor" type="b2602c69:ProjectViewProjectNode" />
               <item name="muse-processor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="muse-processor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="muse-processor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="pptxgen" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="muse-processor" type="b2602c69:ProjectViewProjectNode" />
@@ -276,6 +213,10 @@
       </pane>
       <pane id="Scope" />
     </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -293,38 +234,28 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\muse-processor" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\muse-processor\trials" />
       <recent name="C:\xampp\htdocs\muse-processor" />
       <recent name="C:\xampp\htdocs\muse-processor\app\Views" />
       <recent name="C:\xampp\htdocs\muse-processor\app\Controllers" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\muse-processor" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" />
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -362,7 +293,13 @@
       <workItem from="1611019586892" duration="382000" />
       <workItem from="1611388168401" duration="16424000" />
       <workItem from="1611538408769" duration="177000" />
-      <workItem from="1612261649091" duration="5472000" />
+      <workItem from="1612261649091" duration="6272000" />
+      <workItem from="1612271674023" duration="1696000" />
+      <workItem from="1612314097922" duration="327000" />
+      <workItem from="1619182131036" duration="1599000" />
+      <workItem from="1619184559327" duration="58000" />
+      <workItem from="1619184717451" duration="577000" />
+      <workItem from="1619185348983" duration="7006000" />
     </task>
     <task id="LOCAL-00001" summary="codeigniter init, combine controller">
       <created>1608257008773</created>
@@ -448,17 +385,24 @@
       <option name="project" value="LOCAL" />
       <updated>1611411213982</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix lyric copy (add ticks and ticks_f), check reff per language, only copy lyric if the verse is correct, put title a bit higher">
+      <created>1612269933031</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1612269933031</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106909000" />
+    <option name="totallyTimeSpent" value="109732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3336887" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3411514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -473,7 +417,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49946696" visible="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946696" />
       <window_info anchor="bottom" id="File Transfer" order="12" visible="true" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -484,7 +428,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="codeigniter init, combine controller" />
@@ -499,7 +443,15 @@
     <MESSAGE value="fetch assets based on manifest.json, rebuild prod assets" />
     <MESSAGE value="add verse number on bottom left of slide" />
     <MESSAGE value="reformat code" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformat code" />
+    <MESSAGE value="fix lyric copy (add ticks and ticks_f), check reff per language, only copy lyric if the verse is correct, put title a bit higher" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix lyric copy (add ticks and ticks_f), check reff per language, only copy lyric if the verse is correct, put title a bit higher" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/muse_processor@phpunit_xml_dist.xml" NAME="phpunit.xml.dist Coverage Results" MODIFIED="1619184814119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.js" />
@@ -684,13 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/pptxgen/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -702,6 +647,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="841">
           <caret line="84" column="7" selection-start-line="84" selection-start-column="7" selection-end-line="84" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trials/192.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="350" column="10" selection-start-line="350" selection-start-column="10" selection-end-line="350" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Ppt.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -719,27 +678,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trials/192.xml">
+    <entry file="file://$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="350" column="10" selection-start-line="350" selection-start-column="10" selection-end-line="350" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Combine.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="75" column="24" lean-forward="true" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+        <state relative-caret-position="410">
+          <caret line="175" column="29" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="29" />
           <folding>
-            <element signature="e#34#55#0#PHP" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#23#51#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Ppt.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -750,13 +696,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="168" column="34" selection-start-line="168" selection-start-column="34" selection-end-line="168" selection-end-column="34" />
+        <state relative-caret-position="34">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trials/097.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25177">
+          <caret line="1481" column="23" selection-start-line="1481" selection-start-column="23" selection-end-line="1481" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Combine.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="197" column="9" lean-forward="true" selection-start-line="197" selection-start-column="9" selection-end-line="197" selection-end-column="9" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#23#51#0" expanded="true" />
+            <element signature="e#34#55#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -6,6 +6,7 @@ use ZipArchive;
 class Combine extends BaseController
 {
     protected $helpers = ['url', 'form', 'xml'];
+    private $isWIndows = false;
 
     public function index()
     {
@@ -17,12 +18,18 @@ class Combine extends BaseController
         $langs = ['id', 'jp', 'en'];
         $filename = $this->request->getVar('filename');
 
+        // determine user's OS
+        if(strpos(getenv("HTTP_USER_AGENT"), "Win") !== FALSE) {
+            $this->isWIndows = true;
+        }
+
         // get xmls
         $xmls = [];
         foreach ($langs as $lang) {
             $input_data = $this->request->getFile('muse.' . $lang);
             if ($input_data->isFile()) {
-                $xmls[$lang] = new SimpleXMLElement(file_get_contents($input_data->getTempName()));
+                $fetchedXML = new SimpleXMLElement(file_get_contents($input_data->getTempName()));
+                $xmls[$lang] = $this->normalize($fetchedXML);
             }
         }
 
@@ -68,6 +75,31 @@ class Combine extends BaseController
 
         $zip->close();
         $this->downloadZipFile($zip_file_path);
+    }
+
+    /**
+     * Normalize score
+     * @param SimpleXMLElement $fetchedXml
+     * @return SimpleXMLElement
+     */
+    private function normalize(SimpleXMLElement $fetchedXml): SimpleXMLElement
+    {
+        // Remove empty lyric tags
+        foreach ($fetchedXml->xpath('/museScore/Score/Staff/Measure/voice/Chord/Lyrics') as $lyric) {
+            if($lyric->text == '') {
+                unset($lyric[0]);
+            }
+        }
+
+        // Set page scale (to make score big)
+        foreach ($fetchedXml->xpath('/museScore/Score/Style/Spatium') as $node) {
+            $node[0] = 2.600;
+        }
+        foreach ($fetchedXml->xpath('/museScore/Score/Style/titleFontSize') as $node) {
+            $node[0] = 20;
+        }
+
+        return $fetchedXml;
     }
 
     /**
@@ -194,6 +226,14 @@ class Combine extends BaseController
             // add lyric number
             if ($lang !== 'id') {
                 $lyric->addChild('no', $lang_num);
+            }
+
+            // set font to Yu Mincho for Japanese
+            if ($this->isWIndows && $lang == 'jp') {
+                $lyric->addChild('family', 'Yu Mincho Demibold');
+                $offset = $lyric->addChild('offset');
+                $offset->addAttribute('x', '0');
+                $offset->addAttribute('y', '2');
             }
         }
     }
