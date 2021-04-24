@@ -19,7 +19,7 @@ class Combine extends BaseController
         $filename = $this->request->getVar('filename');
 
         // determine user's OS
-        if(strpos(getenv("HTTP_USER_AGENT"), "Win") !== FALSE) {
+        if(PHP_OS_FAMILY == 'Windows') {
             $this->isWIndows = true;
         }
 
@@ -51,9 +51,11 @@ class Combine extends BaseController
         // copy lyrics
         for ($verse_num = 1; $verse_num <= $score_infos['id']['total_verses']; $verse_num++) {
             $new_xml = new SimpleXMLElement($xmls['id']->saveXML());
+            $this->setScoreStyle($new_xml, 'showMeasureNumber', 0);
 
             // change title & remove subtitle
             $this->setTitle($new_xml, $en_title, $jp_title);
+            $this->setScoreStyle($new_xml, 'titleFontSize', 16);
 
             // remove all lyrics
             $this->cleanScore($new_xml);
@@ -92,12 +94,7 @@ class Combine extends BaseController
         }
 
         // Set page scale (to make score big)
-        foreach ($fetchedXml->xpath('/museScore/Score/Style/Spatium') as $node) {
-            $node[0] = 2.600;
-        }
-        foreach ($fetchedXml->xpath('/museScore/Score/Style/titleFontSize') as $node) {
-            $node[0] = 20;
-        }
+        $this->setScoreStyle($fetchedXml, 'Spatium', 2.6);
 
         return $fetchedXml;
     }
@@ -145,7 +142,7 @@ class Combine extends BaseController
     private function setTitle(SimpleXMLElement &$new_xml, string $en_title, string $jp_title): void
     {
         foreach ($new_xml->xpath('/museScore/Score/Staff/VBox/Text') as $text) {
-            if ($text[0]->style == 'Title') { // set tiitle
+            if ($text[0]->style == 'Title') { // set title
                 if (!empty($jp_title)) {
                     $text[0]->text .= PHP_EOL . $jp_title;
                 }
@@ -159,7 +156,7 @@ class Combine extends BaseController
 
         // set height of VBox
         foreach ($new_xml->xpath('/museScore/Score/Staff/VBox/height') as $height) {
-            $height[0] = 10.6;
+            $height[0] = 7.3;
         }
     }
 
@@ -289,5 +286,26 @@ class Combine extends BaseController
         }
 
         return $score_info;
+    }
+
+    /**
+     * Set style value of Musescore
+     * @param SimpleXMLElement $xml
+     * @param string $tagName
+     * @param $value
+     */
+    private function setScoreStyle(SimpleXMLElement $xml, string $tagName, $value): void
+    {
+        $isSet = false;
+        foreach ($xml->xpath('/museScore/Score/Style/' . $tagName) as $node) {
+            $node[0] = $value;
+            $isSet = true;
+        }
+
+        if (!$isSet) {
+            foreach ($xml->xpath('/museScore/Score/Style') as $node) {
+                $node->addChild($tagName, $value);
+            }
+        }
     }
 }
