@@ -4,10 +4,9 @@
     <list default="true" id="6900465a-fbf0-4625-ab2b-10e6899a9a34" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Combine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Combine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dist/ppt-f6a5fac5726da383bbb6.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dist/ppt-f6a5fac5726da383bbb6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/ppt-4e703d9fbfaed4b22e8e.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/ppt-4e703d9fbfaed4b22e8e.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/pptxgen/PptGenerator.js" afterDir="false" />
     </list>
@@ -296,7 +295,10 @@
       <workItem from="1619184559327" duration="58000" />
       <workItem from="1619184717451" duration="577000" />
       <workItem from="1619185348983" duration="8011000" />
-      <workItem from="1619263006424" duration="7539000" />
+      <workItem from="1619263006424" duration="7687000" />
+      <workItem from="1619349903936" duration="579000" />
+      <workItem from="1619396723496" duration="1145000" />
+      <workItem from="1619857722598" duration="2374000" />
     </task>
     <task id="LOCAL-00001" summary="codeigniter init, combine controller">
       <created>1608257008773</created>
@@ -396,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619192480325</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="ppt using 16x9 layout">
+      <created>1619279978147</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1619279978147</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -434,6 +443,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="codeigniter init, combine controller" />
     <MESSAGE value="phpstorm setup, setup score title" />
@@ -449,7 +468,8 @@
     <MESSAGE value="reformat code" />
     <MESSAGE value="fix lyric copy (add ticks and ticks_f), check reff per language, only copy lyric if the verse is correct, put title a bit higher" />
     <MESSAGE value="add score normalizer, update to 2 measures setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="add score normalizer, update to 2 measures setup" />
+    <MESSAGE value="ppt using 16x9 layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="ppt using 16x9 layout" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
