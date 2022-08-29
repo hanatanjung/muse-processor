@@ -1,7 +1,7 @@
 {
-  "name": "muse-processor",
+  "name": "irectokyo/muse-processor",
   "type": "project",
-  "description": "Combine multilanguage lyrics into single score and convert score into PPT",
+  "description": "Combine multi languages lyrics into single score and convert score into PPT",
   "homepage": "https://irec.tokyo/",
   "license": "MIT",
   "require": {
@@ -14,7 +14,8 @@
     "laminas/laminas-escaper": "^2.6",
     "psr/log": "^1.1",
     "ext-simplexml": "*",
-    "ext-zip": "*"
+    "ext-zip": "*",
+    "google/apiclient": "^2.0"
   },
   "require-dev": {
     "codeigniter4/codeigniter4-standard": "^1.0",
