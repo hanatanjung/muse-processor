@@ -15,7 +15,7 @@
     "psr/log": "^1.1",
     "ext-simplexml": "*",
     "ext-zip": "*",
-    "google/apiclient": "^2.0"
+    "google/apiclient": "^2.12.1"
   },
   "require-dev": {
     "codeigniter4/codeigniter4-standard": "^1.0",
@@ -35,11 +35,17 @@
       "@composer dump-autoload",
       "CodeIgniter\\ComposerScripts::postUpdate"
     ],
-    "test": "phpunit"
+    "test": "phpunit",
+    "pre-autoload-dump": "Google\\Task\\Composer::cleanup"
   },
   "support": {
     "forum": "http://forum.codeigniter.com/",
     "source": "https://github.com/codeigniter4/CodeIgniter4",
     "slack": "https://codeigniterchat.slack.com"
+  },
+  "extra": {
+    "google/apiclient-services": [
+      "Drive"
+    ]
   }
 }

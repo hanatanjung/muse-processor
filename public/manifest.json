@@ -1,1 +1,9 @@
-{"ppt":{"css":"/dist/ppt-1856e5627f745a3e2a2d.css","js":"/dist/ppt-1856e5627f745a3e2a2d.js"}}
+{
+  "ppt": {
+    "css": "/dist/ppt.css",
+    "js": "/dist/ppt.js"
+  },
+  "gdrive": {
+    "js": "/dist/gdrive.js"
+  }
+}
