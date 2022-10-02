@@ -16,7 +16,7 @@ class FinalSlide extends BaseController
         $client->setAuthConfig(FCPATH . '../src/credentials/google-oauth.json');
         $client->addScope(Drive::DRIVE);
 
-        $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'];
+        $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $client->setRedirectUri($redirect_uri);
 
         // add "?logout" to the URL to remove a token from the session

@@ -5,7 +5,7 @@
     <!-- CONTENT -->
     <section class="section">
 
-        <?= form_open_multipart('final-slide/generate', ['id' => 'ppt-generator']) ?>
+        <?= form_open_multipart('finalslide', ['id' => 'final-slide']) ?>
 
         <div class="field">
             <?= form_label('New File Name', 'new-file-name', ['class' => 'label']) ?>
