@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
     <!-- CONTENT -->
-    <section class="section mx-6">
+    <section class="section">
 
         <?= form_open_multipart('final-slide/generate', ['id' => 'ppt-generator']) ?>
 
@@ -41,18 +41,6 @@
             </div>
         <?php endif; ?>
 
-    </section>
-
-    <section class="columns">
-        <div id="scores-display" class="column is-flex is-align-items-center is-flex-direction-row is-flex-wrap-wrap is-three-quarter">
-
-        </div>
-        <div class="column is-one-quarter">
-            <button id="create-ppt" class="button is-info mb-2" disabled>Create PPT</button>
-            <div class="notification is-warning is-light">
-                <pre id="crop-values-reader" class="is-size-7">{}</pre>
-            </div>
-        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.4.0/dist/pptxgen.bundle.js"></script>
