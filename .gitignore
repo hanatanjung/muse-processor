@@ -109,7 +109,7 @@ writable/generated/
 public/temp/
 
 # IDE setup
-.idea
+.idea/
 
 # CMake
 cmake-build-*/
