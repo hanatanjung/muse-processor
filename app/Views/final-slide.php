@@ -21,9 +21,9 @@
 
         <div class="field">
             <?= form_label('Slides', 'slides', ['class' => 'label']) ?>
-            <?php if (!empty($authUrl)) :?><a href="<?= $authUrl ?>">PHP Auth</a><?php endif ?>
+            <?php if (isset($authUrl)) :?><a href="<?= $authUrl ?>">PHP Auth</a><?php endif ?>
             <div id="gdrive-list" class="box">
-                <?php var_dump($files) ?>
+                <?php if (isset($files)) var_dump($files) ?>
             </div>
         </div>
 

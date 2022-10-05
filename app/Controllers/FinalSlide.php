@@ -55,16 +55,21 @@ class FinalSlide extends BaseController
 
         if ($client->getAccessToken()) {
             $token_data = $client->verifyIdToken();
+            $service = new Drive($client);
+
+            return view('final-slide', [
+                'files' => $service->files->listFiles([
+                    'q' => 'mimeType="application/vnd.google-apps.folder" and parents in "1UVt8oGJu-5w5KPZD5VYnXKUgiDuCXMdy"',
+                    'includeItemsFromAllDrives' => true,
+                    //'corpora' => 'drive',
+                    'supportsAllDrives' => true,
+                    'fields' => 'files(id,name,size)'
+                ])
+            ]);
         }
 
-        $service = new Drive($client);
-
         return view('final-slide', [
-            'authUrl' => $authUrl ?? '',
-            'files' => $service ? $service->files->listFiles([
-                'driveId' => '1UVt8oGJu-5w5KPZD5VYnXKUgiDuCXMdy',
-                'fields' => 'files(id,size)'
-            ]) : false
+            'authUrl' => $authUrl ?? ''
         ]);
     }
 
