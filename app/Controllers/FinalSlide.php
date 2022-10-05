@@ -14,9 +14,10 @@ class FinalSlide extends BaseController
     {
         $client = new Client();
         $client->setAuthConfig(FCPATH . '../src/credentials/google-oauth.json');
+        $client->setScopes('email');
         $client->addScope(Drive::DRIVE);
 
-        $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
         $client->setRedirectUri($redirect_uri);
 
         // add "?logout" to the URL to remove a token from the session
@@ -57,9 +58,14 @@ class FinalSlide extends BaseController
         }
 
         $service = new Drive($client);
-        //var_dump($service->files->listFiles());
 
-        return view('final-slide', ['authUrl' => $authUrl]);
+        return view('final-slide', [
+            'authUrl' => $authUrl ?? '',
+            'files' => $service ? $service->files->listFiles([
+                'driveId' => '1UVt8oGJu-5w5KPZD5VYnXKUgiDuCXMdy',
+                'fields' => 'files(id,size)'
+            ]) : false
+        ]);
     }
 
     public function generate()
