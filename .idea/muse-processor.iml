@@ -7,6 +7,11 @@
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/app/Config" isTestSource="false" packagePrefix="Config\" />
       <sourceFolder url="file://$MODULE_DIR$/tests/_support" isTestSource="true" packagePrefix="Tests\Support\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/codeigniter4/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kint-php/kint" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-escaper" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
