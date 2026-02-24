@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6900465a-fbf0-4625-ab2b-10e6899a9a34" name="Default Changelist" comment="docs: update changelog">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/muse-processor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/muse-processor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+    <list default="true" id="6900465a-fbf0-4625-ab2b-10e6899a9a34" name="Default Changelist" comment="chore: update composer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/writable/debugbar/debugbar_1771911742.282872.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/writable/debugbar/debugbar_1771911761.033748.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +276,7 @@
       <workItem from="1619396723496" duration="1145000" />
       <workItem from="1619857722598" duration="2374000" />
       <workItem from="1771905332218" duration="1694000" />
-      <workItem from="1771907468688" duration="14637000" />
+      <workItem from="1771907468688" duration="18927000" />
     </task>
     <task id="LOCAL-00001" summary="codeigniter init, combine controller">
       <created>1608257008773</created>
@@ -406,7 +399,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771914141546</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="chore: update composer">
+      <option name="closed" value="true" />
+      <created>1771926995615</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1771926995615</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -472,7 +473,8 @@
     <MESSAGE value="ppt using 16x9 layout" />
     <MESSAGE value="feat: upgrade to CI 4.7" />
     <MESSAGE value="docs: update changelog" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: update changelog" />
+    <MESSAGE value="chore: update composer" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: update composer" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
