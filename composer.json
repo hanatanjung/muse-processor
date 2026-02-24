@@ -11,7 +11,7 @@
     },
     "require": {
         "php": "^8.2",
-        "codeigniter4/framework": "^4.7",
+        "codeigniter4/framework": "v4.6.5",
         "ext-curl": "*",
         "ext-intl": "*",
         "ext-json": "*",
