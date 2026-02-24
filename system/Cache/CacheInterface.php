@@ -1,154 +1,118 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * CodeIgniter
+ * This file is part of CodeIgniter 4 framework.
  *
- * An open source application development framework for PHP
+ * (c) CodeIgniter Foundation <admin@codeigniter.com>
  *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2020 CodeIgniter Foundation
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package    CodeIgniter
- * @author     CodeIgniter Dev Team
- * @copyright  2019-2020 CodeIgniter Foundation
- * @license    https://opensource.org/licenses/MIT	MIT License
- * @link       https://codeigniter.com
- * @since      Version 4.0.0
- * @filesource
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  */
 
 namespace CodeIgniter\Cache;
 
-/**
- * Cache interface
- */
+use Closure;
+
 interface CacheInterface
 {
+    /**
+     * Takes care of any handler-specific setup that must be done.
+     */
+    public function initialize(): void;
 
-	/**
-	 * Takes care of any handler-specific setup that must be done.
-	 */
-	public function initialize();
+    /**
+     * Attempts to fetch an item from the cache store.
+     *
+     * @param string $key Cache item name
+     */
+    public function get(string $key): mixed;
 
-	//--------------------------------------------------------------------
+    /**
+     * Saves an item to the cache store.
+     *
+     * @param string $key   Cache item name
+     * @param mixed  $value The data to save
+     * @param int    $ttl   Time To Live, in seconds (default 60)
+     *
+     * @return bool Success or failure
+     */
+    public function save(string $key, mixed $value, int $ttl = 60): bool;
 
-	/**
-	 * Attempts to fetch an item from the cache store.
-	 *
-	 * @param string $key Cache item name
-	 *
-	 * @return mixed
-	 */
-	public function get(string $key);
+    /**
+     * Attempts to get an item from the cache, or executes the callback
+     * and stores the result on cache miss.
+     *
+     * @param string           $key      Cache item name
+     * @param int              $ttl      Time To Live, in seconds
+     * @param Closure(): mixed $callback Callback executed on cache miss
+     */
+    public function remember(string $key, int $ttl, Closure $callback): mixed;
 
-	//--------------------------------------------------------------------
+    /**
+     * Deletes a specific item from the cache store.
+     *
+     * @param string $key Cache item name
+     *
+     * @return bool Success or failure
+     */
+    public function delete(string $key): bool;
 
-	/**
-	 * Saves an item to the cache store.
-	 *
-	 * @param string  $key   Cache item name
-	 * @param mixed   $value The data to save
-	 * @param integer $ttl   Time To Live, in seconds (default 60)
-	 *
-	 * @return mixed
-	 */
-	public function save(string $key, $value, int $ttl = 60);
+    /**
+     * Deletes items from the cache store matching a given pattern.
+     *
+     * @param string $pattern Cache items glob-style pattern
+     *
+     * @return int Number of deleted items
+     */
+    public function deleteMatching(string $pattern): int;
 
-	//--------------------------------------------------------------------
+    /**
+     * Performs atomic incrementation of a raw stored value.
+     *
+     * @param string $key    Cache ID
+     * @param int    $offset Step/value to increase by
+     */
+    public function increment(string $key, int $offset = 1): bool|int;
 
-	/**
-	 * Deletes a specific item from the cache store.
-	 *
-	 * @param string $key Cache item name
-	 *
-	 * @return mixed
-	 */
-	public function delete(string $key);
+    /**
+     * Performs atomic decrementation of a raw stored value.
+     *
+     * @param string $key    Cache ID
+     * @param int    $offset Step/value to increase by
+     */
+    public function decrement(string $key, int $offset = 1): bool|int;
 
-	//--------------------------------------------------------------------
+    /**
+     * Will delete all items in the entire cache.
+     *
+     * @return bool Success or failure
+     */
+    public function clean(): bool;
 
-	/**
-	 * Performs atomic incrementation of a raw stored value.
-	 *
-	 * @param string  $key    Cache ID
-	 * @param integer $offset Step/value to increase by
-	 *
-	 * @return mixed
-	 */
-	public function increment(string $key, int $offset = 1);
+    /**
+     * Returns information on the entire cache.
+     *
+     * The information returned and the structure of the data
+     * varies depending on the handler.
+     *
+     * @return array<array-key, mixed>|false|object|null
+     */
+    public function getCacheInfo(): array|false|object|null;
 
-	//--------------------------------------------------------------------
+    /**
+     * Returns detailed information about the specific item in the cache.
+     *
+     * @param string $key Cache item name.
+     *
+     * @return array<string, mixed>|null Returns null if the item does not exist, otherwise array<string, mixed>
+     *                                   with at least the 'expire' key for absolute epoch expiry (or null).
+     */
+    public function getMetaData(string $key): ?array;
 
-	/**
-	 * Performs atomic decrementation of a raw stored value.
-	 *
-	 * @param string  $key    Cache ID
-	 * @param integer $offset Step/value to increase by
-	 *
-	 * @return mixed
-	 */
-	public function decrement(string $key, int $offset = 1);
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Will delete all items in the entire cache.
-	 *
-	 * @return mixed
-	 */
-	public function clean();
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Returns information on the entire cache.
-	 *
-	 * The information returned and the structure of the data
-	 * varies depending on the handler.
-	 *
-	 * @return mixed
-	 */
-	public function getCacheInfo();
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Returns detailed information about the specific item in the cache.
-	 *
-	 * @param string $key Cache item name.
-	 *
-	 * @return mixed
-	 */
-	public function getMetaData(string $key);
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Determines if the driver is supported on this system.
-	 *
-	 * @return boolean
-	 */
-	public function isSupported(): bool;
-
-	//--------------------------------------------------------------------
+    /**
+     * Determines if the driver is supported on this system.
+     */
+    public function isSupported(): bool;
 }

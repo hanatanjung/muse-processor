@@ -44,9 +44,15 @@ class Combine extends BaseController
         $jp_title = isset($xmls['en']) ? $this->getTitle($xmls['jp']) : '';
 
         // prepare for zipping
+        $generatedPath = WRITEPATH . 'generated/';
+
+        if (!is_dir($generatedPath)) {
+            mkdir($generatedPath, 0777, true);
+        }
+
         $zip = new ZipArchive();
-        $zip_file_path = WRITEPATH . 'generated/' . $filename . '.zip';
-        $zip->open($zip_file_path, ZipArchive::CREATE);
+        $zip_file_path = $generatedPath . $filename . '.zip';
+        $zip->open($zip_file_path, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
         // copy lyrics
         for ($verse_num = 1; $verse_num <= $score_infos['id']['total_verses']; $verse_num++) {

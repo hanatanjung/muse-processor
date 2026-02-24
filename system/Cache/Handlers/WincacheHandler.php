@@ -1,263 +1,121 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * CodeIgniter
+ * This file is part of CodeIgniter 4 framework.
  *
- * An open source application development framework for PHP
+ * (c) CodeIgniter Foundation <admin@codeigniter.com>
  *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2020 CodeIgniter Foundation
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package    CodeIgniter
- * @author     CodeIgniter Dev Team
- * @copyright  2019-2020 CodeIgniter Foundation
- * @license    https://opensource.org/licenses/MIT	MIT License
- * @link       https://codeigniter.com
- * @since      Version 4.0.0
- * @filesource
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  */
 
 namespace CodeIgniter\Cache\Handlers;
 
-use CodeIgniter\Cache\CacheInterface;
+use CodeIgniter\Exceptions\BadMethodCallException;
+use CodeIgniter\I18n\Time;
+use Config\Cache;
 
 /**
  * Cache handler for WinCache from Microsoft & IIS.
- * Windows-only, so not testable on travis-ci.
- * Unusable methods flagged for code coverage ignoring.
+ *
+ * @codeCoverageIgnore
  */
-class WincacheHandler implements CacheInterface
+class WincacheHandler extends BaseHandler
 {
+    /**
+     * Note: Use `CacheFactory::getHandler()` to instantiate.
+     */
+    public function __construct(Cache $config)
+    {
+        $this->prefix = $config->prefix;
+    }
 
-	/**
-	 * Prefixed to all cache names.
-	 *
-	 * @var string
-	 */
-	protected $prefix;
+    public function initialize(): void
+    {
+    }
 
-	//--------------------------------------------------------------------
+    public function get(string $key): mixed
+    {
+        $key     = static::validateKey($key, $this->prefix);
+        $success = false;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param \Config\Cache $config
-	 */
-	public function __construct($config)
-	{
-		$this->prefix = $config->prefix ?: '';
-	}
+        $data = wincache_ucache_get($key, $success);
 
-	//--------------------------------------------------------------------
+        // Success returned by reference from wincache_ucache_get()
+        return $success ? $data : null;
+    }
 
-	/**
-	 * Takes care of any handler-specific setup that must be done.
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function initialize()
-	{
-		// Nothing to see here...
-	}
+    public function save(string $key, mixed $value, int $ttl = 60): bool
+    {
+        $key = static::validateKey($key, $this->prefix);
 
-	//--------------------------------------------------------------------
+        return wincache_ucache_set($key, $value, $ttl);
+    }
 
-	/**
-	 * Attempts to fetch an item from the cache store.
-	 *
-	 * @param string $key Cache item name
-	 *
-	 * @return mixed
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function get(string $key)
-	{
-		$key = $this->prefix . $key;
+    public function delete(string $key): bool
+    {
+        $key = static::validateKey($key, $this->prefix);
 
-		$success = false;
-		$data    = wincache_ucache_get($key, $success);
+        return wincache_ucache_delete($key);
+    }
 
-		// Success returned by reference from wincache_ucache_get()
-		return ($success) ? $data : null;
-	}
+    public function deleteMatching(string $pattern): never
+    {
+        throw new BadMethodCallException('The deleteMatching method is not implemented for Wincache. You must select File, Redis or Predis handlers to use it.');
+    }
 
-	//--------------------------------------------------------------------
+    public function increment(string $key, int $offset = 1): bool
+    {
+        $key = static::validateKey($key, $this->prefix);
 
-	/**
-	 * Saves an item to the cache store.
-	 *
-	 * @param string  $key   Cache item name
-	 * @param mixed   $value The data to save
-	 * @param integer $ttl   Time To Live, in seconds (default 60)
-	 *
-	 * @return mixed
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function save(string $key, $value, int $ttl = 60)
-	{
-		$key = $this->prefix . $key;
+        $result = wincache_ucache_inc($key, $offset);
 
-		return wincache_ucache_set($key, $value, $ttl);
-	}
+        return $result !== false;
+    }
 
-	//--------------------------------------------------------------------
+    public function decrement(string $key, int $offset = 1): bool
+    {
+        $key = static::validateKey($key, $this->prefix);
 
-	/**
-	 * Deletes a specific item from the cache store.
-	 *
-	 * @param string $key Cache item name
-	 *
-	 * @return boolean
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function delete(string $key)
-	{
-		$key = $this->prefix . $key;
+        $result = wincache_ucache_dec($key, $offset);
 
-		return wincache_ucache_delete($key);
-	}
+        return $result !== false;
+    }
 
-	//--------------------------------------------------------------------
+    public function clean(): bool
+    {
+        return wincache_ucache_clear();
+    }
 
-	/**
-	 * Performs atomic incrementation of a raw stored value.
-	 *
-	 * @param string  $key    Cache ID
-	 * @param integer $offset Step/value to increase by
-	 *
-	 * @return mixed
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function increment(string $key, int $offset = 1)
-	{
-		$key = $this->prefix . $key;
+    public function getCacheInfo(): array|false
+    {
+        return wincache_ucache_info(true);
+    }
 
-		$success = false;
-		$value   = wincache_ucache_inc($key, $offset, $success);
+    public function getMetaData(string $key): ?array
+    {
+        $key = static::validateKey($key, $this->prefix);
 
-		return ($success === true) ? $value : false;
-	}
+        if ($stored = wincache_ucache_info(false, $key)) {
+            $age      = $stored['ucache_entries'][1]['age_seconds'];
+            $ttl      = $stored['ucache_entries'][1]['ttl_seconds'];
+            $hitcount = $stored['ucache_entries'][1]['hitcount'];
 
-	//--------------------------------------------------------------------
+            return [
+                'expire'   => $ttl > 0 ? Time::now()->getTimestamp() + $ttl : null,
+                'hitcount' => $hitcount,
+                'age'      => $age,
+                'ttl'      => $ttl,
+            ];
+        }
 
-	/**
-	 * Performs atomic decrementation of a raw stored value.
-	 *
-	 * @param string  $key    Cache ID
-	 * @param integer $offset Step/value to increase by
-	 *
-	 * @return mixed
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function decrement(string $key, int $offset = 1)
-	{
-		$key = $this->prefix . $key;
+        return null;
+    }
 
-		$success = false;
-		$value   = wincache_ucache_dec($key, $offset, $success);
-
-		return ($success === true) ? $value : false;
-	}
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Will delete all items in the entire cache.
-	 *
-	 * @return boolean
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function clean()
-	{
-		return wincache_ucache_clear();
-	}
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Returns information on the entire cache.
-	 *
-	 * The information returned and the structure of the data
-	 * varies depending on the handler.
-	 *
-	 * @return mixed
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function getCacheInfo()
-	{
-		return wincache_ucache_info(true);
-	}
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Returns detailed information about the specific item in the cache.
-	 *
-	 * @param string $key Cache item name.
-	 *
-	 * @return mixed
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function getMetaData(string $key)
-	{
-		$key = $this->prefix . $key;
-
-		if ($stored = wincache_ucache_info(false, $key))
-		{
-			$age      = $stored['ucache_entries'][1]['age_seconds'];
-			$ttl      = $stored['ucache_entries'][1]['ttl_seconds'];
-			$hitcount = $stored['ucache_entries'][1]['hitcount'];
-
-			return [
-				'expire'   => $ttl - $age,
-				'hitcount' => $hitcount,
-				'age'      => $age,
-				'ttl'      => $ttl,
-			];
-		}
-
-		return false;
-	}
-
-	//--------------------------------------------------------------------
-
-	/**
-	 * Determines if the driver is supported on this system.
-	 *
-	 * @return boolean
-	 */
-	public function isSupported(): bool
-	{
-		return (extension_loaded('wincache') && ini_get('wincache.ucenabled'));
-	}
-
-	//--------------------------------------------------------------------
+    public function isSupported(): bool
+    {
+        return extension_loaded('wincache') && ini_get('wincache.ucenabled');
+    }
 }

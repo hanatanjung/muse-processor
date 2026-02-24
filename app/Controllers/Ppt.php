@@ -27,12 +27,18 @@ class Ppt extends BaseController
                 $verse_num = intval($number_array[0]);
                 $page_num = isset($number_array[1]) ? intval($number_array[1]) : 1;
 
-                $img->move(ROOTPATH . 'public/temp');
-                $stored_images[$verse_num][$page_num] = base_url('temp/' . $name);
+                $targetPath = ROOTPATH . 'public/temp';
+                $img->move($targetPath);
+
+                $stored_images[$verse_num][$page_num] = [
+                    'url'  => base_url('temp/' . $name),
+                    'path' => $targetPath . '/' . $name
+                ];
             }
         }
 
-        list($width, $height) = getimagesize($stored_images[1][1]);
+        $firstImagePath = $stored_images[1][1]['path'];
+        list($width, $height) = getimagesize($firstImagePath);
 
         return $this->setResponseFormat('json')->respond([
             'success' => true,
@@ -45,11 +51,13 @@ class Ppt extends BaseController
 
     public function delete()
     {
-        $filenames = $this->request->getJSON('true');
+        $filenames = $this->request->getJSON(true);
+
         foreach ($filenames as $pages) {
-            foreach ($pages as $name) {
-                $path = str_replace(base_url(), ROOTPATH . 'public', $name);
-                unlink ($path);
+            foreach ($pages as $file) {
+                if (isset($file['path']) && file_exists($file['path'])) {
+                    unlink($file['path']);
+                }
             }
         }
 

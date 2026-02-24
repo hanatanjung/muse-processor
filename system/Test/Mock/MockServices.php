@@ -1,27 +1,43 @@
-<?php namespace CodeIgniter\Test\Mock;
+<?php
 
-use \CodeIgniter\Config\BaseService;
+declare(strict_types=1);
+
+/**
+ * This file is part of CodeIgniter 4 framework.
+ *
+ * (c) CodeIgniter Foundation <admin@codeigniter.com>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
+namespace CodeIgniter\Test\Mock;
+
+use CodeIgniter\Autoloader\FileLocator;
+use CodeIgniter\Config\BaseService;
 
 class MockServices extends BaseService
 {
+    /**
+     * @var array<non-empty-string, non-empty-string>
+     */
+    public $psr4 = [
+        'Tests/Support' => TESTPATH . '_support/',
+    ];
 
-	public $psr4     = [
-		'Tests/Support' => TESTPATH . '_support/',
-	];
-	public $classmap = [];
+    /**
+     * @var array<class-string, string>
+     */
+    public $classmap = [];
 
-	//--------------------------------------------------------------------
+    public function __construct()
+    {
+        // Don't call the parent since we don't want the default mappings.
+        // parent::__construct();
+    }
 
-	public function __construct()
-	{
-		// Don't call the parent since we don't want the default mappings.
-		// parent::__construct();
-	}
-
-	//--------------------------------------------------------------------
-	public static function locator(bool $getShared = true)
-	{
-		return new \CodeIgniter\Autoloader\FileLocator(static::autoloader());
-	}
-
+    public static function locator(bool $getShared = true)
+    {
+        return new FileLocator(static::autoloader());
+    }
 }
